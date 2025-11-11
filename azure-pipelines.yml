@@ -1,6 +1,6 @@
 variables:
   system.debug: true
-  
+
 trigger:
   branches:
     include:
@@ -16,12 +16,12 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      npm install
+      npm ci
       npm run build
-    displayName: 'Build project'
+    displayName: 'Build React App'
 
   - task: AzureWebApp@1
     inputs:
       azureSubscription: 'My-Azure-Connection'
       appName: 'mywebapp123'
-      package: '$(System.DefaultWorkingDirectory)'
+      package: '$(System.DefaultWorkingDirectory)/build'
