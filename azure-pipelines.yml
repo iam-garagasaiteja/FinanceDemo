@@ -19,6 +19,6 @@ steps:
 
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: 'My-Azure-Connection'  # must match exactly
+      azureSubscription: 'My-Azure-Connection'
       appName: 'mywebapp123'
       package: '$(System.DefaultWorkingDirectory)'
