@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install
+      npm run build
+    displayName: 'Build project'
+
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: '<2a148e81-fac1-46ba-9ba8-85deea23ed6e>'
+      appName: 'mywebapp123'
+      package: '$(System.DefaultWorkingDirectory)'
